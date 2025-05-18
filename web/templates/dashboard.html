@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crypto Dashboard</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #111; color: #eee; }
+    .card { background: #222; padding: 1.5rem; margin-bottom: 1.5rem; border-radius: 10px; }
+    h1 { color: #f39c12; }
+    button { background: #f39c12; color: black; padding: 0.5rem 1rem; border: none; cursor: pointer; }
+    table { width: 100%; margin-top: 1rem; border-collapse: collapse; }
+    td, th { padding: 0.5rem; text-align: left; border-bottom: 1px solid #333; }
+  </style>
+</head>
+<body>
+  <h1>🚀 Crypto Snapshot Dashboard</h1>
+  <form action="/run" method="post">
+    <button type="submit">Run Snapshot</button>
+  </form>
+
+  {% if data.snapshot_crypto %}
+    <div class="card">
+      <h2>🪙 Crypto Prices</h2>
+      <table>
+        <tr><th>Name</th><th>Symbol</th><th>Price (USD)</th></tr>
+        {% for coin in data.snapshot_crypto.data %}
+          <tr>
+            <td>{{ coin.name }}</td>
+            <td>{{ coin.symbol.upper() }}</td>
+            <td>${{ '{:,.2f}'.format(coin.price) }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  {% endif %}
+
+  {% if data.fear_greed_fetcher %}
+    <div class="card">
+      <h2>😱 Fear & Greed Index</h2>
+      <p><strong>Score:</strong> {{ data.fear_greed_fetcher.data.score }} / 100</p>
+      <p><strong>Classification:</strong> {{ data.fear_greed_fetcher.data.classification }}</p>
+    </div>
+  {% endif %}
+</body>
+</html>

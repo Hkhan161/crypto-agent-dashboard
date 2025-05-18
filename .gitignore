@@ -1,0 +1,13 @@
+# Rust build artifacts
+**/target/
+**/Cargo.lock
+
+# Python cache
+**/__pycache__/
+*.pyc
+
+# Snapshot log (runtime only)
+rust_runtime/snapshots.jsonl
+
+# OS metadata
+.DS_Store
