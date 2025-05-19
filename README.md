@@ -77,8 +77,3 @@ This will:
 
 ✅ You now have a **live crypto monitoring system** powered by Rust and Python.
 
-## 🤝 Contributing
-
-We welcome contributions! If you have suggestions or improvements, please feel free to submit a pull request or open an issue.
-
----
